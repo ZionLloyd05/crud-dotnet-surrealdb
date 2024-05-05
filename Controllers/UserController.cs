@@ -21,6 +21,11 @@ namespace SurrealCrud.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetUsers(CancellationToken cancellationToken)
         {
@@ -29,6 +34,12 @@ namespace SurrealCrud.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// Get a single user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(string id, CancellationToken cancellationToken)
         {
@@ -40,9 +51,15 @@ namespace SurrealCrud.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Create a new user
+        /// </summary>
+        /// <param name="newUser"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> CreateUser(
-            [FromBody]CreateUserDTO newUser, 
+            [FromBody] CreateUserDTO newUser,
             CancellationToken cancellationToken)
         {
             var user = new User
@@ -59,6 +76,13 @@ namespace SurrealCrud.Controllers
             return Ok(createdUser);
         }
 
+        /// <summary>
+        /// Update an existing user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(
             [FromBody] UpdateUserDTO user,
@@ -79,6 +103,12 @@ namespace SurrealCrud.Controllers
             return Ok(updatedUser);
         }
 
+        /// <summary>
+        /// Delete an existing user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id, CancellationToken cancellationToken)
         {
